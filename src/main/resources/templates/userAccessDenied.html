@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Access is denied</title>
+</head>
+<body>
+<h1>Access is denied</h1>
+
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="LogOut"/>
+</form>
+</body>
+</html>
