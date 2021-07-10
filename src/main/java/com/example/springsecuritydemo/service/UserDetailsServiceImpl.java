@@ -1,4 +1,4 @@
-package com.example.springsecuritydemo.security;
+package com.example.springsecuritydemo.service;
 
 import com.example.springsecuritydemo.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
