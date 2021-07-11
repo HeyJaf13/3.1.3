@@ -65,13 +65,13 @@ public class UsersController {
         return "admin/edit";
     }
 
-    @RequestMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
         userService.updateUser(user);
         return "redirect:/admin";
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
         return "redirect:/admin";
