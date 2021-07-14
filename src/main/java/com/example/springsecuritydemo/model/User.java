@@ -8,29 +8,41 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 
+
+@Entity
+@Data
+@NoArgsConstructor
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String firstname;
+
+    private String lastname;
+
+    private int age;
+
+    private String email;
 
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+    public String getRolesString() {
+        StringBuilder sb = new StringBuilder();
+
+        for(Role role : roles) {
+            sb.append(role.getRole().substring(5).concat(" "));
+        }
+        return sb.toString().trim();
+    }
+
     @Override
     public String getUsername() {
-        return name;
+        return getEmail();
     }
 
     @Override

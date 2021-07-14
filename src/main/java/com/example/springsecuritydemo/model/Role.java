@@ -9,17 +9,18 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Data @NoArgsConstructor
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String role;
+
+    public Role(String role) {
+        this.role = role;
+    }
 
     @Transient
     @ManyToMany(mappedBy = "roles")

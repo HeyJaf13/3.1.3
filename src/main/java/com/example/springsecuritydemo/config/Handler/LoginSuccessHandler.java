@@ -1,7 +1,9 @@
 package com.example.springsecuritydemo.config.Handler;
 
+import com.example.springsecuritydemo.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +19,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException {
-        String name = authentication.getName();
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (roles.contains("ROLE_ADMIN")) {
             httpServletResponse.sendRedirect("/admin");
         } else {
-            httpServletResponse.sendRedirect("/user" + name);
+            String id = String.valueOf(user.getId());
+            httpServletResponse.sendRedirect("/user");
         }
     }
 }
