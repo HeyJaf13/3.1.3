@@ -1,5 +1,6 @@
 package com.example.springsecuritydemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,10 +10,11 @@ import java.util.Collection;
 import java.util.Set;
 
 
-
 @Entity
+@Table
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
+@JsonIgnoreProperties("role_id")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +37,7 @@ public class User implements UserDetails {
         StringBuilder sb = new StringBuilder();
 
         for(Role role : roles) {
-            sb.append(role.getRole().substring(5).concat(" "));
+            sb.append(role.getRole() + " ");
         }
         return sb.toString().trim();
     }

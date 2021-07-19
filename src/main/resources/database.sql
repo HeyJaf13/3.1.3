@@ -9,8 +9,8 @@ CREATE TABLE user
 )
     ENGINE = InnoDB;
 
--- Table: roles
-CREATE TABLE roles
+-- Table: role
+CREATE TABLE role
 (
     id   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     role VARCHAR(100) NOT NULL
@@ -24,7 +24,7 @@ CREATE TABLE user_roles
     roles_id INT NOT NULL,
 
     FOREIGN KEY (user_id) REFERENCES user (id),
-    FOREIGN KEY (roles_id) REFERENCES roles (id),
+    FOREIGN KEY (roles_id) REFERENCES role (id),
 
     UNIQUE (user_id, roles_id)
 )
@@ -39,9 +39,9 @@ VALUES (2, 'Tom', 'Hardy', 45, 'TomH@mail.ru', 'q123');
 INSERT INTO user
 VALUES (3, 'Jack', 'Richer', 51, 'Jackgmail.com', 'z123');
 
-INSERT INTO roles
+INSERT INTO role
 VALUES (1, 'ROLE_USER');
-INSERT INTO roles
+INSERT INTO role
 VALUES (2, 'ROLE_ADMIN');
 
 INSERT INTO user_roles

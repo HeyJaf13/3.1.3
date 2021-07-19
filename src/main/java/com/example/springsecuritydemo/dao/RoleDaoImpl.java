@@ -17,18 +17,12 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public Role findRoleByString(String s) {
         Optional<Role> role = Optional.of((Role) manager.createQuery("select r from Role r where r.role=?1").setParameter(1, s).getSingleResult());
-        if (role.isPresent()) {
-            return role.get();
-        }
-        throw new IllegalArgumentException("Invalid role");
+        return role.get();
     }
 
     @Override
     public Role findRoleById(Long id) {
         Optional<Role> role = Optional.of((Role) manager.createQuery("select r from Role r where r.id=?1").setParameter(1, id).getSingleResult());
-        if (role.isPresent()) {
-            return role.get();
-        }
-        throw new IllegalArgumentException("Invalid role");
+        return role.get();
     }
 }

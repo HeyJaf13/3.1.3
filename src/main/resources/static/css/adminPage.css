@@ -1,0 +1,21 @@
+.navbar {
+    height: 55px;
+}
+.margin {
+    padding-top: 20px;
+}
+
+.white {
+    background: white;
+}
+
+.gray {
+    background: #f8f9fa;
+}
+
+.userP {
+    margin-bottom: 0;
+    padding-top: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+}

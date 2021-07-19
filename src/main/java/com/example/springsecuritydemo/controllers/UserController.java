@@ -8,9 +8,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping(value = "/user")
+    @GetMapping(value = "")
     public String getStandardUser(ModelMap model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("activeUser", user);
